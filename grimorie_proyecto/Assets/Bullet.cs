@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
 {
     Rigidbody2D rb;
 
+    [SerializeField]
+    [Tooltip("Launch force speed")]
     float launchForce = 10f;
     float timeSinceSpawn = 0f;
 

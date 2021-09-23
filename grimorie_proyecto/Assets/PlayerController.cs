@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     void UpdateExplodeCondition()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2")) // Con click derecho
         {
             Debug.Log("Clickeaste Fire2 ");
             if (CanExplode())
