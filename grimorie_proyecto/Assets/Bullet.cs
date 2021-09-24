@@ -16,6 +16,9 @@ public class Bullet : MonoBehaviour
     [Tooltip("Time since this bullet is shot until it is automatically destoyed")]
     float lifetime = 4f;
 
+    [SerializeField]
+    float bulletDmg = 20f;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,7 +47,7 @@ public class Bullet : MonoBehaviour
         EnemyController soldier = col.gameObject.GetComponent<EnemyController>();
         if (soldier)
         {
-            soldier.Fix();
+            soldier.TakeDamage(bulletDmg);
         }
         Destroy(gameObject);
     }

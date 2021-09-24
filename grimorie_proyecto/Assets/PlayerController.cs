@@ -13,6 +13,12 @@ public class PlayerController : MonoBehaviour
     Vector2 movementDirection;
     Vector2 lookDirection;
 
+    // Spells
+    [SerializeField]
+    public bool SpellPyro = true ;
+    [SerializeField]
+    public bool SpellHydro = true ;
+
     // Serializing private fields makes them appear in the editor
     [SerializeField]
     [Tooltip("Speed at which Player will move")]
@@ -20,8 +26,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Maximum health for the player")]
-    float maxHealth = 100f;
-    float currentHealth;
+    public float maxHealth = 100f;
+    public float currentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -79,12 +85,13 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        float armLength = .5f;
-        float armHeight = .75f;
+        float armLength = 30f;
+        float armHeight = 10f;
         Vector2 spawnPosition2D = lookDirection * armLength;
         Vector3 spawnPosition = transform.position + new Vector3(spawnPosition2D.x, spawnPosition2D.y + armHeight, 0f);
 
-
+        // Debug.Log("Spawneo la bala en:" + spawnPosition);
+        // Debug.Log("Las aristas de la caja de Player estan en" + rb.position);
         GameObject bulletInstance = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
 
         // Set rotation

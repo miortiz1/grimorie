@@ -16,6 +16,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     [Tooltip("True if this unit moves horizontally, false if it moves vertically")]
     bool bHorizontalMovement = true;
+    [SerializeField]
+    [Tooltip("Maximum health for the enemy")]
+    public float maxHealth = 100f;
+    public float currentHealth;
+    // public HealthbarBehaviour Healthbar;
 
 
     // Changes the direction of movement (1 or -1)
@@ -34,7 +39,8 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        // Healthbar.SetHealth(currentHealth, maxHealth);
     }
 
     // Update is called once per frame
@@ -79,8 +85,21 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void Fix()
+    public void TakeDamage(float damage)
     {
-        bFixed = true;
+        currentHealth = Mathf.Clamp(currentHealth - damage, 0f, maxHealth);
+
+        Debug.Log("CurrentEnemyHealth: " + currentHealth);
+
+        if (currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Enemy Died! :(");
+        Destroy(gameObject);
     }
 }
