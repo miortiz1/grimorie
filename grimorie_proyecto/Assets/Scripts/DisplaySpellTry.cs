@@ -21,6 +21,7 @@ public class DisplaySpellTry : MonoBehaviour
     {
         spellTry = "";
         spells.Add("while mana area hydro", "hydro");
+        spells.Add("bullet pyro", "pyro");
 
         PressButton.ButtonPressed += AddSpellWord;
     }
