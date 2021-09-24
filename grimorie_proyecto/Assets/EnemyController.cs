@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyController : MonoBehaviour
@@ -101,5 +102,6 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("Enemy Died! :(");
         Destroy(gameObject);
+        SceneManager.LoadScene("Winner");
     }
 }
